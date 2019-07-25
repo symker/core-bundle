@@ -1,0 +1,27 @@
+{
+  "name": "symker/core-bundle",
+  "type": "library",
+  "description": "Symker Core Bundle",
+  "keywords": ["symker"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Linas Linartas",
+      "email": "linas@linartas.lt"
+    }
+  ],
+  "require": {
+    "php": "^7.2.0",
+    "symfony/framework-bundle": "^4.3"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^0.11.12"
+  },
+  "autoload": {
+    "psr-4": {
+      "Symker\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
