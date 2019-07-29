@@ -1,0 +1,17 @@
+language: php
+php:
+  - '7.2'
+  - '7.3'
+  - 'nightly'
+
+allow_failures:
+  - php: nightly
+
+before_script:
+  - composer self-update
+  - composer install --no-interaction --prefer-source
+
+script:
+  - composer run lint
+  - composer run phpcs
+  - composer run phpstan
