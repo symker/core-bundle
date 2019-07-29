@@ -1,0 +1,12 @@
+<?php declare(strict_types = 1);
+
+namespace Symker\CoreBundle\Module\Back\Persistence;
+
+use Symker\CoreBundle\Module\Back\Communication\AllowedInCommunicationLayerInterface;
+
+interface EntityManagerInterface extends
+    RepositoryAwareInterface,
+    AllowedInPersistenceLayerInterface,
+    AllowedInCommunicationLayerInterface
+{
+}

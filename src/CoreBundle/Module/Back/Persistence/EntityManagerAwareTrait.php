@@ -1,22 +1,38 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Symker\CoreBundle\Module\Back\Persistence;
 
 use Symker\CoreBundle\Module\Back\Persistence\Exception\EntityManagerNotFoundException;
 
+/**
+ * @see \Symker\CoreBundle\Module\Back\Persistence\EntityManagerAwareInterface
+ */
 trait EntityManagerAwareTrait
 {
+    /**
+     * @var \Symker\CoreBundle\Module\Back\Persistence\EntityManagerInterface|null
+     */
     private $entityManager;
 
-    public function setEntityManager(AbstractEntityManager $entityManager): void
+    /**
+     * @param \Symker\CoreBundle\Module\Back\Persistence\EntityManagerInterface $entityManager
+     *
+     * @return void
+     */
+    public function setEntityManager(EntityManagerInterface $entityManager): void
     {
         $this->entityManager = $entityManager;
     }
 
-    protected function getEntityManager(): AbstractEntityManager
+    /**
+     * @throws \Symker\CoreBundle\Module\Back\Persistence\Exception\EntityManagerNotFoundException
+     *
+     * @return \Symker\CoreBundle\Module\Back\Persistence\EntityManagerInterface
+     */
+    protected function getEntityManager(): EntityManagerInterface
     {
         if ($this->entityManager === null) {
-            throw new EntityManagerNotFoundException(__CLASS__);
+            throw new EntityManagerNotFoundException('Entity Manager not found in ' . static::class);
         }
 
         return $this->entityManager;

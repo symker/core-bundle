@@ -1,8 +1,13 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Symker\CoreBundle\Module\Back\Persistence;
 
 interface RepositoryAwareInterface
 {
-    public function setRepository(AbstractRepository $repository): void;
+    /**
+     * @param \Symker\CoreBundle\Module\Back\Persistence\RepositoryInterface $repository
+     *
+     * @return void
+     */
+    public function setRepository(RepositoryInterface $repository): void;
 }

@@ -1,8 +1,13 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Symker\CoreBundle\Module\Service;
 
 interface ServiceAwareInterface
 {
-    public function setService(AbstractService $service): void;
+    /**
+     * @param \Symker\CoreBundle\Module\Service\ServiceInterface $service
+     *
+     * @return void
+     */
+    public function setService(ServiceInterface $service): void;
 }

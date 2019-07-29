@@ -1,17 +1,9 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Symker\CoreBundle;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class CoreBundle extends Extension
+class CoreBundle extends Bundle
 {
-    /**
-     * Loads a specific configuration.
-     *
-     * @throws \InvalidArgumentException When provided tag is not defined in this extension
-     */
-    public function load(array $configs, ContainerBuilder $container)
-    {}
 }

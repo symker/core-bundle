@@ -1,17 +1,12 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Symker\CoreBundle\Module\Back\Communication\Controller;
 
-use Symker\CoreBundle\Module\Back\Business\FacadeAwareInterface;
 use Symker\CoreBundle\Module\Back\Business\FacadeAwareTrait;
-use Symker\CoreBundle\Module\Back\Communication\CommunicationDependencyProviderAwareInterface;
-use Symker\CoreBundle\Module\Back\Communication\CommunicationDependencyProviderAwareTrait;
-use Symker\CoreBundle\Module\Back\Persistence\PersistenceAwareInterface;
 use Symker\CoreBundle\Module\Back\Persistence\PersistenceAwareTrait;
 
-abstract class AbstractController implements FacadeAwareInterface, PersistenceAwareInterface, CommunicationDependencyProviderAwareInterface
+abstract class AbstractController implements AbstractControllerInterface
 {
     use FacadeAwareTrait;
     use PersistenceAwareTrait;
-    use CommunicationDependencyProviderAwareTrait;
 }

@@ -1,8 +1,7 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Symker\CoreBundle\Module\Service;
 
-abstract class AbstractService implements ServiceDependencyProviderAwareInterface
+abstract class AbstractService implements ServiceInterface
 {
-    use ServiceDependencyProviderAwareTrait;
 }

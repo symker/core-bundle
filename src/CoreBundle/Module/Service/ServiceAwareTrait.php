@@ -1,27 +1,40 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Symker\CoreBundle\Module\Service;
 
 use Symker\CoreBundle\Module\Service\Exception\ServiceNotFoundException;
 
 /**
- * @internal
+ * @see \Symker\CoreBundle\Module\Service\ServiceAwareInterface
  */
 trait ServiceAwareTrait
 {
+    /**
+     * @var \Symker\CoreBundle\Module\Service\ServiceInterface|null
+     */
     private $service;
 
-    protected function getService(): AbstractService
+    /**
+     * @param \Symker\CoreBundle\Module\Service\ServiceInterface $service
+     *
+     * @return void
+     */
+    public function setService(ServiceInterface $service): void
+    {
+        $this->service = $service;
+    }
+
+    /**
+     * @throws \Symker\CoreBundle\Module\Service\Exception\ServiceNotFoundException
+     *
+     * @return \Symker\CoreBundle\Module\Service\ServiceInterface
+     */
+    protected function getService(): ServiceInterface
     {
         if ($this->service === null) {
-            throw new ServiceNotFoundException(__CLASS__);
+            throw new ServiceNotFoundException('Service not found in ' . static::class);
         }
 
         return $this->service;
-    }
-
-    public function setService(AbstractService $service): void
-    {
-        $this->service = $service;
     }
 }
