@@ -61,11 +61,13 @@ class DelegatorConstraintPass extends AbstractCompilerPass
             }
 
             $argumentDefinition = $container->getDefinition((string)$argument);
-            $argumentSymkerTag = $argumentDefinition->getTag('symker')[0];
-            if (empty($argumentSymkerTag)) {
+
+            $argumentSymkerTags = $argumentDefinition->getTag('symker');
+            if (empty($argumentSymkerTags)) {
                 $error('Non-Symker Dependencies are forbidden.', (string)$argument);
             }
 
+            $argumentSymkerTag = $argumentSymkerTags[0];
             $argumentBundle = $argumentSymkerTag['bundle'];
             $argumentModule = $argumentSymkerTag['module'];
             if ($bundle !== $argumentBundle) {
